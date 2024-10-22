@@ -53,12 +53,12 @@ const App = () => {
     }
   return (
     <div>
-        <input name="name1" data-testid="input1" value="fn" onChange = {(e) => {
+        <input name="name1" data-testid="input1" value={fn} onChange = {(e) => {
             setfn(e.target.value); 
-        }} placeholder="EnterFirstName" />
-        <input name="name2" data-testid="input2" value="fn" onChange = {(e) => {
+        }} placeholder="Enter First Name" />
+        <input name="name2" data-testid="input2" value={ln} onChange = {(e) => {
             setLn(e.target.value); 
-        }} placeholder="EnterSecondName" />
+        }} placeholder="Enter Second Name" />
          <button data-testid="calculate_relationship" onClick={calculateBtnHandler}>Calculate Relationship Future</button>
         <button data-testid="clear" onClick={() => {
             setfn("")
