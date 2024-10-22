@@ -1,72 +1,85 @@
 import React, { useState } from 'react'
 
-const outputs = ["Friends", "Love", "Affection", "Marriage", "Enemy", "Siblings"];
+const outputs = ["Friends", "Love", "Affection", "Marriage", "Enemy", "Siblings"]
 
 const App = () => {
 
-    const[fn, setfn] = useState("");
-    const[ln, setLn] = useState("");
-    const[relation, setRelation] = useState("");
+    const[fn, setFn] = useState("")
+    const[ln, setLn] = useState("")
+    const[relation, setRelation] = useState("")
+
 
 
     const calculateBtnHandler = () => {
-        if(fn.length == 0 || ln.length == 0){
-            return setRelation("Please Enter valid input");
+
+        if(fn.length == 0 || ln.length == 0)
+        {
+            return setRelation("Please Enter valid input")
         }
 
-        let firstArr = fn.split("");
-        let secondArr = ln.split("");
+        console.log("heheh")
+        let firstArr = fn.split("")
+        let SecondArr = ln.split("")
+        let nArr = []
 
-        let nArr = [];
-
-        for(let i=0; i<firstArr.length; i++){
+        for(let i = 0; i < firstArr.length; i++)
+        {
             let flag = false;
-            for(let j = 0; j<secondArr.length; j++){
-                if(firstArr[i] == secondArr[j]){
+            for(let j = 0; j < SecondArr.length; j++)
+            {
+                if(firstArr[i] === SecondArr[j])
+                {
                     flag = true;
-                    secondArr.splice(j,1);
+                    SecondArr.splice(j, 1)
                     break;
                 }
+
+                
             }
 
-            if(!flag){
-                nArr.push(firstArr[i]);
-            }
+            if(!flag)
+                {
+                    nArr.push(firstArr[i])
+                }
         }
 
-        let score = (nArr.length + secondArr.length)%6;
+        let tbc = (nArr.length + SecondArr.length) % 6;
 
-        switch(score){
+        switch(tbc){
             case 1 :
-                return setRelation("Friends");
+                return setRelation('Friends');
             case 2 :
-                return setRelation("Love");
+                return setRelation('Love');
             case 3 :
-                return setRelation("Affection");
+                return setRelation('Affection');
             case 4 :
-                return setRelation("Marriage");
+                return setRelation('Marriage');
             case 5 :
-                return setRelation("Enemy");
+                return setRelation('Enemy');
             case 0 :
-                return setRelation("Siblings");
+                return setRelation('Siblings');
         }
+        
     }
+
   return (
     <div>
-        <input name='name1' data-testid="input1" value={fn} onChange = {(e) => {
-            setfn(e.target.value); 
-        }} placeholder="Enter first name" />
-        <input name='name2' data-testid="input2" value={ln} onChange = {(e) => {
-            setLn(e.target.value); 
-        }} placeholder="Enter second name" />
-         <button data-testid="calculate_relationship" onClick={calculateBtnHandler}>Calculate Relationship Future</button>
+        
+        <input name='name1' data-testid="input1" value={fn} onChange={(e) => {
+            setFn(e.target.value)
+        }} placeholder='Enter first name'/>
+        <input name='name2' data-testid="input2" value={ln} onChange={(e) => {
+            setLn(e.target.value)
+        }} placeholder='Enter second name'/>
+        <button data-testid="calculate_relationship" onClick={calculateBtnHandler}>Calculate Relationship Future</button>
         <button data-testid="clear" onClick={() => {
-            setfn("")
+            setFn("")
             setLn("")
             setRelation("")
         }}>Clear</button>
 
         <h3 data-testid="answer">{relation}</h3>
+
     </div>
   )
 }
