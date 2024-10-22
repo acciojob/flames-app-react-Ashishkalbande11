@@ -42,9 +42,9 @@ const App = () => {
             case 2 :
                 return setRelation("Love");
             case 3 :
-                return setRelation("Friends");
+                return setRelation("Affection");
             case 4 :
-                return setRelation("Marraige");
+                return setRelation("Marriage");
             case 5 :
                 return setRelation("Enemy");
             case 0 :
